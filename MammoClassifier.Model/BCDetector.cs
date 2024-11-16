@@ -1,30 +1,25 @@
-﻿using Microsoft.ML.Transforms.Image;
-using Microsoft.ML;
-using System.Drawing;
-using Microsoft.ML.Data;
-using System.Runtime.CompilerServices;
+﻿using OpenCvSharp;
+using System.Net.NetworkInformation;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using System.ComponentModel.DataAnnotations;
-using OpenCvSharp;
-using System;
 
 namespace MammoClassifier.Model
 {
     public class BCDetector
     {
-        private readonly MLContext _mlContext;
-        private readonly ITransformer _model;
+        private readonly OpenCvSharp.Dnn.Net _classifier_net;
+        private readonly OpenCvSharp.Dnn.Net _segmentor_net;
+
 
         public BCDetector()
         {
-            _mlContext = new MLContext();
-            _model = LoadModel();
+            _classifier_net = OpenCvSharp.Dnn.CvDnn.ReadNetFromOnnx(BCDetectorConfig.ModelFilePath);
+            _segmentor_net = OpenCvSharp.Dnn.CvDnn.ReadNetFromOnnx(BCDetectorConfig.PectRemoverPath);
         }
 
         public struct BCDetectorConfig
         {
-            public const string ModelFilePath = "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Model\\model\\convnextv2_base-AdamW-up_sample-pos_smooth-mixup-cmmd_vindr-VOILUT_Flipped_pect_imgs-bs8x8-s0_e36_seed0.onnx";
+            public static readonly string ModelFilePath = Path.Join(new string[] {Directory.GetCurrentDirectory(), "model", "convnextv2_base-AdamW-up_sample-pos_smooth-mixup-cmmd_vindr-VOILUT_Flipped_pect_imgs-bs8x8-s0_e36_seed0.onnx"});
+            public static readonly string PectRemoverPath = Path.Join(new string[] {Directory.GetCurrentDirectory(), "model", "last_resnet101_unet3-inbreast_mias-breast_roi-adam-no_cls_guide-no_mixup-elastic_flip-output_resized-bs8_e100.onnx" });
 
             public const int ImageWidth = 1024;
             public const int ImageHeight = 1024;
@@ -44,39 +39,35 @@ namespace MammoClassifier.Model
             }
         }
 
-        public ModelOutput DetectBCInMLImage(MLImage image)
-        {
-            var imageInputs = new List<ModelInput>
-            {
-                new ModelInput() {ImageAsBitmap = image}
-            };
+        //public ModelOutput DetectBCInMLImage(MLImage image)
+        //{
+        //    var imageInputs = new List<ModelInput>
+        //    {
+        //        new ModelInput() {ImageAsBitmap = image}
+        //    };
 
-            float[] scoredImage = ScoreImageList(imageInputs).Single();
+        //    float[] scoredImage = ScoreImageList(imageInputs).Single();
 
-            //Format the score with labels
-            return WrapModelOutput(scoredImage);
-        }
+        //    //Format the score with labels
+        //    return WrapModelOutput(scoredImage);
+        //}
 
         public IEnumerable<ModelOutput> DetectBCInImageFiles(string[] imagePaths)
         {
-            var imageInputs = imagePaths
-                            .Select(path => new ModelInput()
-                            {
-                                ImageAsBitmap = load_and_preprocess_image(path)
-                            }
-                            ).ToList();
+            var imageProbs = new float[imagePaths.Length][];
 
-            float[][] scoredImages = ScoreImageList(imageInputs);
+
+            for(int i = 0; i < imagePaths.Length; i++)
+            {
+                imageProbs[i] = predict(imagePaths[i]);
+            }
 
 
             //Format the score with labels
-            var result =
-                imagePaths.Select(Path.GetFileName)
-                    .Zip(
-                        scoredImages,
-                        (fileName, probabilities) => WrapModelOutput(probabilities, fileName)
+            var result = imagePaths.Select(Path.GetFileName).Zip(
+                        imageProbs,
+                        (fileName, probabilities) => WrapModelOutput(fileName, probabilities)
                     );
-
 
             return result;
         }
@@ -94,85 +85,40 @@ namespace MammoClassifier.Model
             image.ConvertTo(image, MatType.CV_32FC3, alpha: 1 / maxval); // alpha is the scale factor which the image is multiplyed by
             image = image.Subtract(new Scalar(0.20275));
             image = image.Divide(0.19875);
-            
+
             var input_blob = OpenCvSharp.Dnn.CvDnn.BlobFromImage(image);
-            _opencv_net.SetInput(input_blob);
-            var output = opencv_net.Forward();
+
+            _classifier_net.SetInput(input_blob);
+            var output = _classifier_net.Forward();
             output.GetArray<float>(out float[] logits);
             var probs = BCDetectorConfig.Softmax(logits);
 
             return probs;
         }
 
-        private static ModelOutput WrapModelOutput(float[] probabilities, string filename = null)
+        private void RemovePectMuscle(Mat image)
         {
-            List<(string label, float probability)> mergedLabelsWithProbabilities =
-                                                          BCDetectorConfig
-                                                          .Labels
-                                                          .Zip(
-                                                                probabilities,
-                                                                (label, probability) => (label, probability))
-                                                          .ToList();
+            Cv2.Resize(image, image, new Size(512, 512));
+            image = image.Normalize(0, 1, NormTypes.MinMax);
+            var input_blob = OpenCvSharp.Dnn.CvDnn.BlobFromImage(image);
+            _segmentor_net.SetInput(input_blob);
+            var output = _segmentor_net.Forward();
+            output = output.Multiply(255);
+            output.ConvertTo(output, MatType.CV_8UC3);
+            Cv2.ImShow("output", output);
+            output.GetArray<float>(out float[] array);
+        } 
+
+        private static ModelOutput WrapModelOutput(string filename, float[] probabilities)
+        {
+            List<(string label, float prob)> mergedLabelsWithProbabilities = 
+                BCDetectorConfig.Labels.Zip(probabilities, (label, prob) => (label, prob)).ToList();
 
             return new ModelOutput()
             {
                 Filename = filename,
                 Probabilities = mergedLabelsWithProbabilities
             };
-        }
-
-        private ITransformer LoadModel()
-        {
-            var onnxScorer = _mlContext
-                .Transforms
-                .ApplyOnnxModel(
-                    modelFile: BCDetectorConfig.ModelFilePath,
-                    inputColumnNames: new[] { BCDetectorConfig.InputLayer },
-                    outputColumnNames: new[] { BCDetectorConfig.OutputLayer }
-
-                );
-
-            var preProcessingPipeline = _mlContext
-                    .Transforms
-                    .ResizeImages(
-                        inputColumnName: nameof(ModelInput.ImageAsBitmap),
-                        imageWidth: BCDetectorConfig.ImageWidth,
-                        imageHeight: BCDetectorConfig.ImageHeight,
-                        outputColumnName: nameof(ModelInput.ImageAsBitmap)
-                    ).Append(_mlContext
-                    .Transforms
-                    .ExtractPixels(
-                        inputColumnName: nameof(ModelInput.ImageAsBitmap),
-                        outputColumnName: BCDetectorConfig.InputLayer,
-                        outputAsFloatArray: true
-                    ));
-
-            var completePipeline = preProcessingPipeline.Append(onnxScorer);
-
-            // Fit scoring pipeline to the ModelInput structure to create a model
-            var emptyInput = _mlContext.Data.LoadFromEnumerable(new List<ModelInput>());
-            var model = completePipeline.Fit(emptyInput);
-
-            return model;
-        }
-
-        private float[][] ScoreImageList(List<ModelInput> imageInputs)
-        {
-            // Create an IDataView from the image list
-            IDataView imageDataView = _mlContext.Data.LoadFromEnumerable(imageInputs);
-
-            // Transform the IDataView with the model
-            IDataView scoredData = _model.Transform(imageDataView);
-
-            // Extract the scores from the output layer
-            var scoringValues = scoredData.GetColumn<float[]>(BCDetectorConfig.OutputLayer);
-
-            //// Run the scores through the SoftMax function
-            //float[][] probabilities;
-            //probabilities = scoringValues.Select(BCDetectorConfig.Softmax)
-            //                            .ToArray();
-
-            return scoringValues.Cast<float[]>().ToArray();//probabilities;
         }
     }
 }

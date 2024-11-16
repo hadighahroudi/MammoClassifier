@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MammoClassifier.Model.CLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57655869e7832add8c416fbdd320284275b0c216")]
 [assembly: System.Reflection.AssemblyProductAttribute("MammoClassifier.Model.CLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MammoClassifier.Model.CLI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

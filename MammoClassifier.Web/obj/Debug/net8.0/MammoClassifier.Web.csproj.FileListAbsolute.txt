@@ -28,3 +28,4 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debu
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\MammoClassifier.Web.pdb
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\MammoClassifier.Web.genruntimeconfig.cache
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\ref\MammoClassifier.Web.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\MammoClassifier.Web.sourcelink.json

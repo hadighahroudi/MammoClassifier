@@ -10,3 +10,6 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\De
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\refint\MammoClassifier.Model.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.pdb
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\ref\MammoClassifier.Model.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.sourcelink.json
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\bin\Debug\net8.0\model\convnextv2_base-AdamW-up_sample-pos_smooth-mixup-cmmd_vindr-VOILUT_Flipped_pect_imgs-bs8x8-s0_e36_seed0.onnx
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\bin\Debug\net8.0\model\last_resnet101_unet3-inbreast_mias-breast_roi-adam-no_cls_guide-no_mixup-elastic_flip-output_resized-bs8_e100.onnx

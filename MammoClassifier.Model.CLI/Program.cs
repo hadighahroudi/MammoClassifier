@@ -36,12 +36,12 @@ foreach (var fileWithScore in BCProbabilities)
 
     foreach (var label_prob in fileWithScore.Probabilities)
     {
-        if (label_prob.probability > 0.1)
+        if (label_prob.prob > 0.1)
         {
             Console.ForegroundColor = ConsoleColor.Green;
         }
 
-        Console.Write($"[{label_prob.probability:P0}] {label_prob.label}  ");
+        Console.Write($"[{label_prob.prob:P0}] {label_prob.label}  ");
 
         Console.ForegroundColor = ConsoleColor.Gray;
     }
