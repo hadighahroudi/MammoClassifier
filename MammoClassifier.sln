@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MammoClassifier.Data", "MammoClassifier.Data\MammoClassifier.Data.csproj", "{DD1D360A-2ABC-4FA8-B4FA-6B4332A5A4F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MammoClassifier.Application", "MammoClassifier.Application\MammoClassifier.Application.csproj", "{5C19EC80-3E26-40D4-91E2-CC7F20B2F75A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MammoClassifier.Web", "MammoClassifier.Web\MammoClassifier.Web.csproj", "{64406996-FCE1-45F3-88F6-07843A1B3C4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MammoClassifier.Model", "MammoClassifier.Model\MammoClassifier.Model.csproj", "{FCB4C59E-70FF-44BB-AC40-5E0BD461EA86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MammoClassifier.Model.CLI", "MammoClassifier.Model.CLI\MammoClassifier.Model.CLI.csproj", "{13CBD17A-51FD-4711-BD16-83AB337DB159}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD1D360A-2ABC-4FA8-B4FA-6B4332A5A4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1D360A-2ABC-4FA8-B4FA-6B4332A5A4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1D360A-2ABC-4FA8-B4FA-6B4332A5A4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1D360A-2ABC-4FA8-B4FA-6B4332A5A4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C19EC80-3E26-40D4-91E2-CC7F20B2F75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C19EC80-3E26-40D4-91E2-CC7F20B2F75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C19EC80-3E26-40D4-91E2-CC7F20B2F75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C19EC80-3E26-40D4-91E2-CC7F20B2F75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64406996-FCE1-45F3-88F6-07843A1B3C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64406996-FCE1-45F3-88F6-07843A1B3C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64406996-FCE1-45F3-88F6-07843A1B3C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64406996-FCE1-45F3-88F6-07843A1B3C4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB4C59E-70FF-44BB-AC40-5E0BD461EA86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB4C59E-70FF-44BB-AC40-5E0BD461EA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB4C59E-70FF-44BB-AC40-5E0BD461EA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB4C59E-70FF-44BB-AC40-5E0BD461EA86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CBD17A-51FD-4711-BD16-83AB337DB159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CBD17A-51FD-4711-BD16-83AB337DB159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CBD17A-51FD-4711-BD16-83AB337DB159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CBD17A-51FD-4711-BD16-83AB337DB159}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {369191FB-C7A5-4F4A-B2FA-A76FE3D1DECF}
+	EndGlobalSection
+EndGlobal

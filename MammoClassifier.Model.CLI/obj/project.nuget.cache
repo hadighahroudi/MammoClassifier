@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "A0lVPuqxj2SK2Xon1TvFqFHrJbj7vGYo6srl3rdvaPfI2Su8+kt7E0poHBvq7i+q4qlZ04xESrlvQ79NV59Zhg==",
+  "success": true,
+  "projectFilePath": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Model.CLI\\MammoClassifier.Model.CLI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\opencvsharp4\\4.10.0.20241108\\opencvsharp4.4.10.0.20241108.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\opencvsharp4.extensions\\4.10.0.20241108\\opencvsharp4.extensions.4.10.0.20241108.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\opencvsharp4.runtime.win\\4.10.0.20241108\\opencvsharp4.runtime.win.4.10.0.20241108.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\mohammadhadi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

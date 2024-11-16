@@ -1,0 +1,12 @@
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\bin\Debug\net8.0\MammoClassifier.Model.deps.json
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\bin\Debug\net8.0\MammoClassifier.Model.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\bin\Debug\net8.0\MammoClassifier.Model.pdb
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.csproj.AssemblyReference.cache
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.AssemblyInfoInputs.cache
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.AssemblyInfo.cs
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.csproj.CoreCompileInputs.cache
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\refint\MammoClassifier.Model.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\MammoClassifier.Model.pdb
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Model\obj\Debug\net8.0\ref\MammoClassifier.Model.dll
