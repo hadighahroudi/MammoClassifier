@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - بینا</title>
+    <link rel="stylesheet" href="~/lib/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/datatables/datatables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/viewer.css" />
+</head>
+<body>
+
+    <div class="main-container">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/cornerstone.js"></script>
+    <script src="~/js/dicomParser.js"></script>
+    <script src="~/js/cornerstoneWADOImageLoader.min.js"></script>
+    <script src="~/js/cornerstoneWebImageLoader.min.js"></script>
+    <script src="~/js/load_viewer.js"></script>
+    <script src="~/js/adjust_window_center_width.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/datatables/datatables.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

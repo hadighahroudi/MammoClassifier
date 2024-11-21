@@ -9,3 +9,7 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Deb
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\refint\MammoClassifier.Data.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\MammoClassifier.Data.pdb
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\ref\MammoClassifier.Data.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\bin\Debug\net8.0\MammoClassifier.Data.runtimeconfig.json
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\MammoClassifier.Data.csproj.AssemblyReference.cache
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\MammoClassifier.Data.sourcelink.json
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Data\obj\Debug\net8.0\MammoClassifier.Data.genruntimeconfig.cache

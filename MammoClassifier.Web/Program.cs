@@ -1,9 +1,32 @@
+using MammoClassifier.Data.Context;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<MammoClassifierDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MammoClassifierConnection"));
+});
+
 var app = builder.Build();
+
+// ASP.NET Core by default does not serve files with unknown MIME types.
+// Custom MIME Type Registration: For better specificity, you can explicitly register the .dcm MIME type:
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    ContentTypeProvider = new FileExtensionContentTypeProvider
+    {
+        Mappings = { [".dcm"] = "application/dicom" } // Custom MIME type
+    }
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MammoClassifier.Web
 build_property.RootNamespace = MammoClassifier.Web
@@ -34,6 +42,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/Shared/_ViewerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3ZXJMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/Viewer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/Viewer/MainPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlld2VyXE1haW5QYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +62,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-8gxzk9sa78
+[D:/Study/Proposal/Breast cancer(v2)/MammoClassifier/MammoClassifier.Web/Views/Shared/_MainLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWluTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-2vqytg4kp7
