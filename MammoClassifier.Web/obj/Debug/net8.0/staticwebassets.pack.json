@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\css\\toggle_switch.css",
+      "PackagePath": "staticwebassets\\css\\toggle_switch.css"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\css\\viewer.css",
       "PackagePath": "staticwebassets\\css\\viewer.css"
     },
@@ -39,6 +43,10 @@
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\image\\Original Image MLO.png",
       "PackagePath": "staticwebassets\\image\\Original Image MLO.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\image\\infinit_loading.gif",
+      "PackagePath": "staticwebassets\\image\\infinit_loading.gif"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\adjust_window_center_width.js",
@@ -75,6 +83,10 @@
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\zoom_in_out_mouse_events.js",
+      "PackagePath": "staticwebassets\\js\\zoom_in_out_mouse_events.js"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\lib\\bootstrap-icons-1.11.3\\0-circle-fill.svg",
@@ -8587,6 +8599,14 @@
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\maps\\mlo_map.png",
       "PackagePath": "staticwebassets\\studies\\maps\\mlo_map.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\temp.png",
+      "PackagePath": "staticwebassets\\studies\\temp.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\temp.py",
+      "PackagePath": "staticwebassets\\studies\\temp.py"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\thumbnails\\cc_thumbnail.png",

@@ -11,59 +11,90 @@
         <h2 class="viewer-title">سامانه هوشنمد بینا</h2>
     </div>
 
-    <div class="studies-cat">
-        <button class="tab active">Primary</button>
-        <button class="tab">Recent</button>
-        <button class="tab">All</button>
-    </div>
-    <div class="study-list">
-        <div class="study-date">09-Jan-2023</div>
-        <div class="study-type">MG</div>
+    @*     <div class="studies-cat">
+    <button class="tab active">Primary</button>
+    <button class="tab">Recent</button>
+    <button class="tab">All</button>
+    </div> *@
+    @if (Model.Images.ElementAt(0).ClassProbs.Any())
+    {
+
+        <div class="d-flex flex-column model-result">
+            <h5 class="m-auto">AI assistant</h5>
+            <hr class="m-0" />
+            <h6>Final prediction:</h6>
+            <p>Label : @Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).Label</p>
+            <p>Probability: @(Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).Probability * 100)%</p>
+            <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).BIRADS</p>
+            @* <hr class="m-0" />
+        <h6>Probability of other categories:</h6>
+        <p>BI-RADS4: 78%</p>
+        <p>BI-RADS3: 37%</p>
+        <p>BI-RADS2: 9%</p>
+        <p>BI-RADS5: 38%</p> *@
+            @* <div class="study-type">MG</div>
         <div class="study-thumbnails">
-            <!-- Thumbnail example -->
-            <div class="thumbnail">
-                <img src="@Model.Images.Single(x => x.Projection == "CC").ThumbnailPath" alt="DICOM Thumbnail" />
-                <p>S: 1003</p>
-            </div>
-            <div class="thumbnail">
-                <img src="@Model.Images.Single(x => x.Projection == "MLO").ThumbnailPath" alt="DICOM Thumbnail" />
-                <p>S: 1004</p>
-            </div>
+        <!-- Thumbnail example -->
+        <div class="thumbnail">
+        <img src="@Model.Images.Single(x => x.Projection == "CC").ThumbnailPath" alt="DICOM Thumbnail" />
+        <p>S: 1003</p>
+        </div>
+        <div class="thumbnail">
+        <img src="@Model.Images.Single(x => x.Projection == "MLO").ThumbnailPath" alt="DICOM Thumbnail" />
+        <p>S: 1004</p>
+        </div>
         </div>
 
         <hr />
 
         <div>
-            <div class="study-date">09-Jan-2023</div>
-            <div class="study-type">MG</div>
-            <div class="study-thumbnails">
-                <!-- Thumbnail example -->
-                <div class="thumbnail">
-                    <img src="thumbnails/cc_thumbnail.png" alt="DICOM Thumbnail" />
-                    <p>S: 1003</p>
-                </div>
-                <div class="thumbnail">
-                    <img src="thumbnails/mlo_thumbnail.png" alt="DICOM Thumbnail" />
-                    <p>S: 1004</p>
-                </div>
-            </div>
+        <div class="study-date">09-Jan-2023</div>
+        <div class="study-type">MG</div>
+        <div class="study-thumbnails">
+        <!-- Thumbnail example -->
+        <div class="thumbnail">
+        <img src="thumbnails/cc_thumbnail.png" alt="DICOM Thumbnail" />
+        <p>S: 1003</p>
         </div>
-    </div>
+        <div class="thumbnail">
+        <img src="thumbnails/mlo_thumbnail.png" alt="DICOM Thumbnail" />
+        <p>S: 1004</p>
+        </div>
+        </div>
+        </div> *@
+        </div>
+    }
 </div>
+
 
 <!-- Main Viewer -->
 <div class="viewer">
     <div class="toolbar">
         <div class="d-flex w-100 justify-content-center">
-            <button class="tool"><i class="bi bi-search"></i></button>
+            <label class="d-flex align-items-center gap-1">
+                Adjust window
+                <label class="switch">
+                    <input type="checkbox" id="mouse_checkbox">
+                    <span class="slider round"></span>
+                </label>
+                Move the image
+            </label>
             <button class="tool"><i class="bi bi-pencil"></i></button>
-            <button class="tool"><i class="bi bi-plus-circle"></i></button>
             <button class="tool"><i class="bi bi-camera"></i></button>
+            <button class="tool" id="zoomIn"><i class="bi bi-zoom-in"></i></button>
+            <button class="tool" id="zoomOut"><i class="bi bi-zoom-out"></i></button>
             <a class="tool btn-list" asp-action="Index">
                 <i class="bi bi-card-list"></i>
             </a>
+            <label class="d-flex align-items-center gap-1">
+                Heatmap
+                <label class="switch">
+                    <input type="checkbox" id="heatmap_checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </label>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 d-flex align-items-center gap-2 window_inputs_div">
             <label>Window Width :</label>
             <input id="ww" type="text" placeholder="e.g. 1000" value="256" />
             <label>Window Center :</label>
@@ -77,16 +108,19 @@
     <div class="image-viewer">
         <div class="image-container">
             <!-- <img id="dicomImage1" src="vindr_cc.png" alt="DICOM Image" /> -->
-            <div id="dicomImage1"></div>
-            <div id="mapImage1"></div>
+            <div id="dicomImage1" class="image-panel"></div>
+            <div id="mapImage1" class="image-panel"></div>
         </div>
         <div class="image-container">
             <!-- <img id="dicomImage2" src="vindr_mlo.png" alt="DICOM Image" /> -->
-            <div id="dicomImage2"></div>
-            <div id="mapImage2"></div>
+            <div id="dicomImage2" class="image-panel"></div>
+            <div id="mapImage2" class="image-panel"></div>
         </div>
     </div>
 </div>
+
+@* <div class="loading"></div> *@
+
 
 @section Scripts {
     <script>

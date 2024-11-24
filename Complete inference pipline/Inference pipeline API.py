@@ -10,7 +10,7 @@ from torchvision.transforms import v2
 import os
 
 SEGMENTOR_PATH = r"D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\checkpoints\last_resnet101_unet3-inbreast_mias-breast_roi-adam-no_cls_guide-no_mixup-elastic_flip-output_resized-bs8_e100.pt"
-CLASSIFIER_PATH = r"D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\checkpoints\convnextv2_base-AdamW-up_sample-pos_smooth-mixup-cmmd_vindr-VOILUT_Flipped_pect_imgs-bs8x8-s0_e36_seed0.pt" 
+CLASSIFIER_PATH = r"D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\checkpoints\convnextv2_base-AdamW-up_sample-pos_smooth-mixup-ikhc-VOILUT_Flipped_pect_imgs-bs8x8-s0_e40_seed0.pt" 
 
 # Define the request body model
 class PredictionRequest(BaseModel):
@@ -79,13 +79,17 @@ def calculate(request: PredictionRequest):
         print("[INFO] Processing the request...")
         cc_map_path, mlo_map_path, logits, probs = prediction_pipeline(request)
 
-        return {"cc_map_path": cc_map_path,
+        result = {"cc_map_path": cc_map_path,
                 "mlo_map_path": mlo_map_path,
                 "logits": logits,
                 "probs": probs}
+        
+        print("Result:\n", result)
+
+        return result
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str('test error'))
+        raise HTTPException(status_code=500, detail='Internal server error.')
 
 if __name__ == '__main__':
     import uvicorn

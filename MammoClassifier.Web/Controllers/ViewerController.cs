@@ -21,7 +21,7 @@ namespace MammoClassifier.Web.Controllers
 
         public async Task<IActionResult> MainPanel(int id)
         {
-            var study = await _context.Studies.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == id);
+            var study = await _context.Studies.Include(x => x.Images).ThenInclude(y => y.ClassProbs).FirstOrDefaultAsync(x => x.Id == id);
 
             if (study == null){
                 return NotFound();

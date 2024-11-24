@@ -27,7 +27,7 @@ html {
 
 .viewer-title {
     font-family: "iran-yekan-700";
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .main-container {
@@ -37,6 +37,11 @@ html {
     height: 100vh;
 }
 
+.index-wrapper {
+    min-width: 50%;
+    margin: auto;
+}
+
 .table-back {
     font: 90% / 1.5em "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif !important;
     background-color: #212529;
@@ -44,8 +49,30 @@ html {
     box-shadow: 3px 3px 20px rgba(0, 0, 0, .3);
     border-radius: 7px;
     color: #dae0e7;
-    min-width: 50%;
+    margin-top: 0.5rem;
 }
+
+.add-study-div {
+    background-color: #212529;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, .3);
+    border-radius: 7px;
+    color: #dae0e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+    .add-study-div > a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+
+    .add-study-div > a:hover{
+        color: #0dcaf0; /*Like btn-info*/
+    }
 
 .custom-table > thead > tr > th,
 .custom-table > tbody > tr > td {
@@ -88,7 +115,7 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
 
 /* Sidebar */
 .studies-sidebar {
-    width: 20%;
+    width: 17%;
     max-width: 300px;
     min-width: 200px;
     background-color: #1e2a38;
@@ -125,18 +152,22 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
         font-weight: bold;
     }
 
-/* Study List */
-.study-list {
+.model-result {
     background: #2a3b4d;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px; /* Space between tabs and study list */
+    font-size: 14px;
 }
 
-    .study-list button {
-        background-color: transparent;
-        border: none;
+    .model-result > * {
+        margin-bottom: 0.5rem !important;
     }
+
+.study-list button {
+    background-color: transparent;
+    border: none;
+}
 
 .study-date,
 .study-type {
@@ -169,6 +200,10 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
     flex-direction: column;
     color: white;
     overflow-y: auto; /* Allow vertical scrolling for larger images */
+}
+
+.window_inputs_div > button {
+    font-size: 12px;
 }
 
 .toolbar {
@@ -206,11 +241,11 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
 
     .tool.btn-list {
         text-decoration: none;
-        position: absolute;
-        right: 1.5rem;
-        font-size: 20px;
+        /*position: relative;*/
+        /*right: 1.5rem;*/
+        /*font-size: 20px;*/
         background: #1e2a38;
-        padding:5px;
+        /*padding:5px;*/
     }
 
 .image-viewer {
@@ -220,6 +255,7 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
     padding: 20px;
     flex-wrap: wrap; /* Allows images to wrap if the viewer area is narrow */
     gap: 10px;
+    height: 100%;
 }
 
 .image-container {
@@ -231,6 +267,7 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
     background-color: #1e2a38; /* Background color to match viewer */
     overflow: hidden;
     position: relative;
+    height: 100%;
 }
 
     .image-container div {
@@ -241,6 +278,38 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
         height: 100%;
     }
 
-#mapImage1, #mapImage2{
-    opacity: 0.4;
+/*#mapImage1, #mapImage2, #mapImage1 > canvas, #mapImage2 > canvas {
+    background-color: rgba(255, 255, 255, 0) !important;
+}*/
+/**/
+#mapImage1, #mapImage2 {
+    opacity: 0.2;
+}
+
+#dicomImage1, #dicomImage2 {
+    background-color: black;
+    background-image: url('../image/infinit_loading.gif');
+    background-size: 25vw;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*#mapImage1 > canvas, #mapImage2 > canvas {
+    background-color: rgba(0, 0, 0, 0);
+}*/
+
+
+.loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    background-image: url('../image/infinit_loading.gif');
+    background-size: 25vw;
+    background-repeat: no-repeat;
+    background-position: center;
 }

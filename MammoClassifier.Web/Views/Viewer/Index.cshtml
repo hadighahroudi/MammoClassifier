@@ -6,37 +6,35 @@
 }
 
 
-@* @foreach (var study in Model)
-{
-    <p>@study.CreateDate</p>
-} *@
+<div class="index-wrapper">
+    <div class="add-study-div"><a asp-action="UploadStudy"><i class="bi bi-plus-circle"></i></a></div>
 
-<div class="m-auto table-back">
-    <table id="StudiesTable" class="custom-table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>NationalID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var study in Model) 
-            {
+    <div class="table-back">
+        <table id="StudiesTable" class="custom-table">
+            <thead>
                 <tr>
-                    <td>@study.CreateDate</td>
-                    <td>@study.NationalID</td>
-                    <td>@study.FirstName</td>
-                    <td>@study.LastName</td>
-                    <td><a asp-action="MainPanel" asp-route-id="@study.Id" class="btn btn-sm btn-outline-light">Open</a></td>
+                    <th>Date</th>
+                    <th>NationalID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var study in Model)
+                {
+                    <tr>
+                        <td>@study.CreateDate</td>
+                        <td>@study.NationalID</td>
+                        <td>@study.FirstName</td>
+                        <td>@study.LastName</td>
+                        <td><a asp-action="MainPanel" asp-route-id="@study.Id" class="btn btn-sm btn-outline-light">Open</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-
 
 @section Scripts {
     <script>
