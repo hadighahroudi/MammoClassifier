@@ -23,9 +23,9 @@
             <h5 class="m-auto">AI assistant</h5>
             <hr class="m-0" />
             <h6>Final prediction:</h6>
-            <p>Label : @Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).Label</p>
-            <p>Probability: @(Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).Probability * 100)%</p>
-            <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs?.ElementAt(0).BIRADS</p>
+            <p>Label : @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label</p>
+            <p>Probability: @Math.Round((Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Probability * 100), 2)%</p>
+            <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).BIRADS</p>
             @* <hr class="m-0" />
         <h6>Probability of other categories:</h6>
         <p>BI-RADS4: 78%</p>

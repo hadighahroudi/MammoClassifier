@@ -14,7 +14,7 @@
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>NationalID</th>
+                    <th>Patient ID</th>
                     <th>First name</th>
                     <th>Last name</th>
                     <th></th>
@@ -25,7 +25,7 @@
                 {
                     <tr>
                         <td>@study.CreateDate</td>
-                        <td>@study.NationalID</td>
+                        <td>@study.PatientID</td>
                         <td>@study.FirstName</td>
                         <td>@study.LastName</td>
                         <td><a asp-action="MainPanel" asp-route-id="@study.Id" class="btn btn-sm btn-outline-light">Open</a></td>

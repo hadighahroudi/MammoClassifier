@@ -120,6 +120,9 @@ namespace MammoClassifier.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -137,11 +140,10 @@ namespace MammoClassifier.Data.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NationalID")
+                    b.Property<string>("PatientID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudyUID")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

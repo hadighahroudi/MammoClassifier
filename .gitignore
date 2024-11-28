@@ -1,2 +1,5 @@
 *.pt
 *.onnx
+*.dcm
+/MammoClassifier.Web/wwwroot/studies
+*__pycache__*

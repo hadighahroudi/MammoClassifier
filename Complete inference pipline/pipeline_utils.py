@@ -135,13 +135,13 @@ def get_laterality(img):
 def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, segmentor_model, device):
     # Remove pect muscle
     mlo_img, mlo_org_shape = process_dcm_image(mlo_path)
-    cv2.imwrite("temp_mlo.png", np.uint8(mlo_img*255))
     mlo_img, mlo_bbox = crop_roi(mlo_img[:, :, np.newaxis], threshold=20)
-    mlo_img = DWT2_CLAHE()(mlo_img)
+    # mlo_img = DWT2_CLAHE()(mlo_img)
     mlo_img = cv2.resize(mlo_img, (512, 1024))
 
-    if get_laterality(mlo_img) == "L":
-        mlo_img = cv2.flip(mlo_img, 1)
+    lat = get_laterality(mlo_img)
+    if lat == "L":
+       mlo_img = cv2.flip(mlo_img, 1)
 
     image = preprocess_transform(mlo_img)
     image = min_max_norm(image)[0]
@@ -155,7 +155,7 @@ def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, se
     pred = postprocess_transform(pred).cpu().numpy()
     mlo_roi = (1-pred).squeeze() * mlo_img.squeeze()
 
-    return mlo_roi, mlo_bbox, mlo_org_shape
+    return mlo_roi, mlo_bbox, mlo_org_shape, lat
 
 
 def prep_convnextv2_for_gradcam(classifier_model):
@@ -200,13 +200,13 @@ def prep_convnextv2_for_gradcam(classifier_model):
 def predict(cc_path, mlo_roi, classifier_model, device, transform):
     # Predict the probs
     cc_img, cc_org_shape = process_dcm_image(cc_path) 
-    cv2.imwrite("temp_cc.png", np.uint8(cc_img*255))
     cc_img, cc_bbox = crop_roi(cc_img[:, :, np.newaxis], threshold=20)
-    cc_img = DWT2_CLAHE()(cc_img)
+    # cc_img = DWT2_CLAHE()(cc_img)
     cc_img = cv2.resize(cc_img, (512, 1024))
 
-    if get_laterality(cc_img) == "L":
-        cc_img = cv2.flip(cc_img, 1)
+    lat = get_laterality(cc_img)
+    if lat == "L":
+       cc_img = cv2.flip(cc_img, 1)
 
     cc_mlo_img_org = np.concatenate([cc_img, mlo_roi], axis = 1)
 
@@ -217,7 +217,7 @@ def predict(cc_path, mlo_roi, classifier_model, device, transform):
     logits = classifier_model(cc_mlo_img.unsqueeze(0).to(device))
     probs = torch.softmax(logits, dim = 1)
         
-    return logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape
+    return logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape, lat
 
 
 def grad_cam(logits, classifier_model, cc_mlo_img_org, cc_mlo_img, device):
@@ -312,10 +312,37 @@ def grad_cam_plusplus(logits, classifier_model, cc_mlo_img_org, cc_mlo_img, devi
     superimposed_img = np.uint8(min_max_norm(superimposed_img)[0] * 255) 
 
     return superimposed_img, scaled_heatmap
+    
 
+def heatmap_transparent(heatmap, start_color = [128, 0, 0, 255], end_color = [128, 0, 0, 255]):
+    """Makes the heatmap background transparent"""
+    # Define the replacement range
+    replacement_start = np.array(start_color[:-1]+ [0])
+    replacement_end = np.array(end_color[:-1] + [0])
+    
+    # Define color ranges for substitution
+    start_color = np.array(start_color)  # Starting RGBA range
+    end_color = np.array(end_color)    # Ending RGBA range
+    
+    # Create a mask for pixels within the range
+    mask = np.all((heatmap >= start_color) & (heatmap <= end_color), axis=-1)
+    
+    # Replace the colors for matching pixels
+    heatmap[mask] = replacement_start + (heatmap[mask] - start_color)
+
+    return heatmap
+
+def remove_artifacts(heatmap, cc_mlo_img, threshold = 0):
+    """Removes any hot area outside the breast tissue"""
+    mask = ((min_max_norm(cc_mlo_img)[0] * 255)[0] > threshold).type(torch.uint8).numpy()
+    mask = cv2.dilate(mask, (5, 5), iterations = 5)[..., np.newaxis]
+    return heatmap * mask
 
 def get_org_cc_mlo_maps(dualview_heatmap, cc_bbox, mlo_bbox, cc_org_shape, mlo_org_shape):
-    """This function pads the saliency maps to match the original image size"""
+    """
+    This function pads the saliency maps to match the original image size
+    Note: The dualview_heatmap is supposed to have transparent background.
+    """
     w = dualview_heatmap.shape[1]
     # 1. Seperate CC and MLO heatmaps
     cc_map, mlo_map = dualview_heatmap[:, :w//2], dualview_heatmap[:, w//2:]
@@ -325,16 +352,15 @@ def get_org_cc_mlo_maps(dualview_heatmap, cc_bbox, mlo_bbox, cc_org_shape, mlo_o
     # 2. Resize each heatmap to the size after crop roi
     cc_map = cv2.resize(cc_map, (x2-x1, y2-y1))
     # 3. Pad the map to match the dicom image
-    cc_map = cv2.copyMakeBorder(cc_map, y1, h-y2, x1, w-x2, cv2.BORDER_CONSTANT, value = (128, 0, 0))
+    cc_map = cv2.copyMakeBorder(cc_map, y1, h-y2, x1, w-x2, cv2.BORDER_CONSTANT, value = (128, 0, 0, 0))
     # 4. Smoothen the conjuction of border and map
     
-
     h, w = mlo_org_shape
     x1, y1, x2, y2 = mlo_bbox
     # 2. Resize each heatmap to the size after crop roi
     mlo_map = cv2.resize(mlo_map, (x2-x1, y2-y1))
     # 3. Pad the map to match the dicom image
-    mlo_map = cv2.copyMakeBorder(mlo_map, y1, h-y2, x1, w-x2, cv2.BORDER_CONSTANT, value = (128, 0, 0))
+    mlo_map = cv2.copyMakeBorder(mlo_map, y1, h-y2, x1, w-x2, cv2.BORDER_CONSTANT, value = (128, 0, 0, 0))
 
     return cc_map, mlo_map
 
@@ -357,3 +383,6 @@ def min_max_norm(a):
 
 def min_max_denorm(a_norm, a_max, a_min):
     return (a_norm * (a_max - a_min)) + a_min
+
+def array_info(arr, name: str = ""):
+    print(f"{name}\nType: {type(arr)}\nShape: {arr.shape}\ndtype: {arr.dtype}\nmin/max: {arr.min()}/{arr.max()}")
