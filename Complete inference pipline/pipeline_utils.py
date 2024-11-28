@@ -139,9 +139,9 @@ def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, se
     # mlo_img = DWT2_CLAHE()(mlo_img)
     mlo_img = cv2.resize(mlo_img, (512, 1024))
 
-    lat = get_laterality(mlo_img)
-    if lat == "L":
-       mlo_img = cv2.flip(mlo_img, 1)
+    # lat = get_laterality(mlo_img)
+    # if lat == "L":
+    #    mlo_img = cv2.flip(mlo_img, 1)
 
     image = preprocess_transform(mlo_img)
     image = min_max_norm(image)[0]
@@ -155,7 +155,7 @@ def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, se
     pred = postprocess_transform(pred).cpu().numpy()
     mlo_roi = (1-pred).squeeze() * mlo_img.squeeze()
 
-    return mlo_roi, mlo_bbox, mlo_org_shape, lat
+    return mlo_roi, mlo_bbox, mlo_org_shape
 
 
 def prep_convnextv2_for_gradcam(classifier_model):
@@ -204,9 +204,9 @@ def predict(cc_path, mlo_roi, classifier_model, device, transform):
     # cc_img = DWT2_CLAHE()(cc_img)
     cc_img = cv2.resize(cc_img, (512, 1024))
 
-    lat = get_laterality(cc_img)
-    if lat == "L":
-       cc_img = cv2.flip(cc_img, 1)
+    # lat = get_laterality(cc_img)
+    # if lat == "L":
+    #    cc_img = cv2.flip(cc_img, 1)
 
     cc_mlo_img_org = np.concatenate([cc_img, mlo_roi], axis = 1)
 
@@ -217,7 +217,7 @@ def predict(cc_path, mlo_roi, classifier_model, device, transform):
     logits = classifier_model(cc_mlo_img.unsqueeze(0).to(device))
     probs = torch.softmax(logits, dim = 1)
         
-    return logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape, lat
+    return logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape
 
 
 def grad_cam(logits, classifier_model, cc_mlo_img_org, cc_mlo_img, device):

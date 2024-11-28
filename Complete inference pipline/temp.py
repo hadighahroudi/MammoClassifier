@@ -1,6 +1,7 @@
 from pipeline_utils import process_dcm_image, crop_roi, get_org_cc_mlo_maps
 import numpy as np
 import cv2
+import pydicom
 
 
 
@@ -27,15 +28,17 @@ import cv2
 # cc_map[:, x1-k_size[0]:x1+k_size[1]] = cv2.blur(cc_map[:, x1-k_size[0]:x1+k_size[1]], k_size)
 # cv2.imwrite("new_cc_map.png", cc_map)
 
-path = r"D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\wwwroot\studies\maps\I0000002_map.png"
-img = cv2.imread(path)
-img = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
-# Create a mask for pixels that match the target color
-mask = (
-    (img[:, :, 0] == 0) &  # Blue channel
-    (img[:, :, 1] == 0) &  # Green channel
-    (img[:, :, 2] < 255)  # Red channel
-)
-img[mask, 3] = 0 # Set the alpha channel to 0 for the matching pixels
+# path = r"D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\wwwroot\studies\maps\I0000002_map.png"
+# img = cv2.imread(path)
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
+# # Create a mask for pixels that match the target color
+# mask = (
+#     (img[:, :, 0] == 0) &  # Blue channel
+#     (img[:, :, 1] == 0) &  # Green channel
+#     (img[:, :, 2] < 255)  # Red channel
+# )
+# img[mask, 3] = 0 # Set the alpha channel to 0 for the matching pixels
 
-cv2.imwrite(path, img)
+# cv2.imwrite(path, img)
+
+print(pydicom.dcmread(r"E:\Sample over2 birads\8684388\I0000000").PatientName) # Patient's Age, Patient ID

@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\js\\adjust_window_center_width.js"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\annotation.js",
+      "PackagePath": "staticwebassets\\js\\annotation.js"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\cornerstone.js",
       "PackagePath": "staticwebassets\\js\\cornerstone.js"
     },
@@ -8597,6 +8601,10 @@
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000000.dcm"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000000_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000000_map.png"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000001.dcm",
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000001.dcm"
     },
@@ -8607,6 +8615,10 @@
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000002.dcm",
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000002.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000002_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000002_map.png"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000003.dcm",
@@ -8621,48 +8633,96 @@
       "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000000.dcm"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000000_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000000_map.png"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000001.dcm",
       "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000001.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000001_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000001_map.png"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000002.dcm",
       "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000002.dcm"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000002_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000002_map.png"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000003.dcm",
       "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000003.dcm"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000000",
-      "PackagePath": "staticwebassets\\studies\\images\\9195106"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9178230\\I0000003_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9178230\\I0000003_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000001",
-      "PackagePath": "staticwebassets\\studies\\images\\9195106"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000000.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000000.dcm"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000002",
-      "PackagePath": "staticwebassets\\studies\\images\\9195106"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000000_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000000_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000003",
-      "PackagePath": "staticwebassets\\studies\\images\\9195106"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000001.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000001.dcm"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000000",
-      "PackagePath": "staticwebassets\\studies\\images\\9196728"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000001_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000001_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000001",
-      "PackagePath": "staticwebassets\\studies\\images\\9196728"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000002.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000002.dcm"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000002",
-      "PackagePath": "staticwebassets\\studies\\images\\9196728"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000002_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000002_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000003",
-      "PackagePath": "staticwebassets\\studies\\images\\9196728"
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000003.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000003.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9195106\\I0000003_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9195106\\I0000003_map.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000000.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000000.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000000_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000000_map.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000001.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000001.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000001_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000001_map.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000002.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000002.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000002_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000002_map.png"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000003.dcm",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000003.dcm"
+    },
+    {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\9196728\\I0000003_map.png",
+      "PackagePath": "staticwebassets\\studies\\images\\9196728\\I0000003_map.png"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\maps\\I0000000_map.png",

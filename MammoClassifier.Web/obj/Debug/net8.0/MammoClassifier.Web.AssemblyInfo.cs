@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MammoClassifier.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+842ec783feca2f1206f816ff10ad8e62a97e7569")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4c24ffcd44e43c7e7e89e8559a1838028efd611")]
 [assembly: System.Reflection.AssemblyProductAttribute("MammoClassifier.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MammoClassifier.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

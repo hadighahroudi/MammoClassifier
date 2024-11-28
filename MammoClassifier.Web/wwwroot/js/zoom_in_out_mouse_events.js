@@ -102,3 +102,16 @@ set_mouse_wheel_events_zoom(element_mlo_dcm, element_mlo_map);
 //    set_mouse_wheel_events_zoom(element_cc_dcm, element_cc_dcm);
 //    set_mouse_wheel_events_zoom(element_mlo_dcm, element_mlo_dcm);
 //}
+
+
+function set_events_for_cursor(overlay) {
+    overlay.addEventListener("mousemove", function (e) {
+        if ((mouse_move_image == true && e.ctrlKey == false) || (mouse_move_image == false && e.ctrlKey == true)) {
+            overlay.style.cursor = "move";
+        } else {
+            overlay.style.cursor = "default";
+        }
+    });
+}
+set_events_for_cursor(element_cc_map);
+set_events_for_cursor(element_mlo_map);

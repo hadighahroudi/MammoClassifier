@@ -10,6 +10,7 @@ from torchvision.transforms import v2
 import os
 from time import time
 import numpy as np
+import pydicom
 
 SEGMENTOR_PATH = r"D:\Checkpoints\last_resnet101_unet3-inbreast_mias-breast_roi-adam-no_cls_guide-no_mixup-elastic_flip-output_resized-bs8_e100.pt"
 CLASSIFIER_PATH = r"D:\Checkpoints\convnextv2_base-AdamW-up_sample-pos_smooth-mixup-ikhc-VOILUT_Flipped_pect_imgs-bs8x8-s0_e40_seed0.pt" 
@@ -21,26 +22,28 @@ class PredictionRequest(BaseModel):
 
 def prediction_pipeline(request: PredictionRequest):
     print("[INFO] Removing pect muscle...")
-    mlo_roi, mlo_bbox, mlo_org_shape, mlo_lat = remove_pect_muscle(request.mlo_path, segmentor_transform, resize_to_org, segmentor_model, device)
+    mlo_roi, mlo_bbox, mlo_org_shape = remove_pect_muscle(request.mlo_path, segmentor_transform, resize_to_org, segmentor_model, device)
     print("[INFO] Predicting breast cancer...")
-    logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape , cc_lat = predict(request.cc_path, mlo_roi, classifier_model, device, classifier_transform)
-    assert mlo_lat == cc_lat, "The mammograms' laterality does not match."
+    logits, probs, cc_mlo_img_org, cc_mlo_img, cc_bbox, cc_org_shape = predict(request.cc_path, mlo_roi, classifier_model, device, classifier_transform)
     print("[INFO] Generating saliency maps...")
     image_with_org_map, heatmap = grad_cam_plusplus(logits, classifier_model, cc_mlo_img_org, cc_mlo_img, device)
     heatmap_a = np.dstack((heatmap, np.full(heatmap.shape[:-1], 255, dtype = np.uint8)))
     heatmap_a = heatmap_transparent(heatmap_a)
     heatmap_a = remove_artifacts(heatmap_a, cc_mlo_img)
     print("[INFO] Saving outputs...")
-    if mlo_lat == "L":
-        heatmap_a = cv2.flip(heatmap_a, 1)
     cc_map, mlo_map = get_org_cc_mlo_maps(heatmap_a, cc_bbox, mlo_bbox, cc_org_shape, mlo_org_shape)
 
-    cc_map_path = os.path.splitext(request.cc_path)[0] + "_map.png" 
-    mlo_map_path = os.path.splitext(request.mlo_path)[0] + "_map.png"
+    cc_map_path = os.path.splitext(request.cc_path)[0] + f"_map.png" 
+    mlo_map_path = os.path.splitext(request.mlo_path)[0] + f"_map.png"
     cv2.imwrite(cc_map_path, cv2.cvtColor(cc_map, cv2.COLOR_RGBA2BGRA))
     cv2.imwrite(mlo_map_path, cv2.cvtColor(mlo_map, cv2.COLOR_RGBA2BGRA))
 
-    return cc_map_path, mlo_map_path, logits.tolist(), probs.tolist()
+    # TEMP: get patient's info
+    name = pydicom.dcmread(request.cc_path).PatientName
+    age = pydicom.dcmread(request.cc_path).PatientAge
+    patId = pydicom.dcmread(request.cc_path).PatientID
+
+    return cc_map_path, mlo_map_path, logits.tolist(), probs.tolist(), name, age, patId
 
 # Initialize the FastAPI app
 app = FastAPI()
@@ -83,25 +86,28 @@ classifier_transform = v2.Compose([
 # Endpoint to handle requests
 @app.post("/predict")
 def calculate(request: PredictionRequest):
-    # try:
-    print("[INFO] Processing the request...")
-    t1 = time()
-    cc_map_path, mlo_map_path, logits, probs = prediction_pipeline(request)
-    t2 = time()
+    try:
+        print("[INFO] Processing the request...")
+        t1 = time()
+        cc_map_path, mlo_map_path, logits, probs, name, age, patId = prediction_pipeline(request)
+        t2 = time()
 
-    print(f"Elapsed time: {t2-t1}s")
+        print(f"Elapsed time: {t2-t1}s")
 
-    result = {"cc_map_path": cc_map_path,
-            "mlo_map_path": mlo_map_path,
-            "logits": logits,
-            "probs": probs}
-    
-    print("Result:\n", result)
+        result = {"cc_map_path": cc_map_path,
+                "mlo_map_path": mlo_map_path,
+                "logits": logits,
+                "probs": probs,
+                "name": name,
+                "age": age,
+                "patId": patId}
+        
+        print("Result:\n", result)
 
-    return result
+        return result
 
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail='Internal server error.')
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f'Internal server error: {e}')
 
 if __name__ == '__main__':
     import uvicorn
