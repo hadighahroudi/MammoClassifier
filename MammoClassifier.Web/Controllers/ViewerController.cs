@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MammoClassifier.Web.Controllers
 {
+    [Authorize]
     public class ViewerController : Controller, IDisposable
     {
         private readonly MammoClassifierDbContext _context;

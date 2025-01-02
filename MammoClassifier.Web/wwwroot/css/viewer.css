@@ -117,7 +117,7 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
 }
 
 /* Sidebar */
-.studies-sidebar {
+.viewer-sidebar {
     width: 17%;
     max-width: 300px;
     min-width: 200px;
@@ -128,11 +128,11 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
 }
 
 /* Studies Tabs */
-.studies-cat {
+/*.studies-cat {
     display: flex;
     margin-bottom: 10px;
-    justify-content: space-between; /* Aligns tabs within the sidebar */
-}
+    justify-content: space-between;*/ /* Aligns tabs within the sidebar */
+/*}*/
 
 .tab {
     background: #2a3b4d;

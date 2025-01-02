@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\image\\infinit_loading.gif"
     },
     {
+      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\image\\radiology monitor.png",
+      "PackagePath": "staticwebassets\\image\\radiology monitor.png"
+    },
+    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\adjust_window_center_width.js",
       "PackagePath": "staticwebassets\\js\\adjust_window_center_width.js"
     },
@@ -8565,16 +8569,8 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\20588020_024ee3569b2605dc_MG_L_CC_ANON.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\20588020_024ee3569b2605dc_MG_L_CC_ANON.dcm"
-    },
-    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\20588020_024ee3569b2605dc_MG_L_CC_ANON_map.png",
       "PackagePath": "staticwebassets\\studies\\images\\20588020_024ee3569b2605dc_MG_L_CC_ANON_map.png"
-    },
-    {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\20588072_024ee3569b2605dc_MG_L_ML_ANON.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\20588072_024ee3569b2605dc_MG_L_ML_ANON.dcm"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\20588072_024ee3569b2605dc_MG_L_ML_ANON_map.png",
@@ -8597,32 +8593,16 @@
       "PackagePath": "staticwebassets\\studies\\images\\24055355_1e10aef17c9fe149_MG_L_CC_ANON_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000000.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000000.dcm"
-    },
-    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000000_map.png",
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000000_map.png"
-    },
-    {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000001.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000001.dcm"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000001_map.png",
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000001_map.png"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000002.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000002.dcm"
-    },
-    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000002_map.png",
       "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000002_map.png"
-    },
-    {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000003.dcm",
-      "PackagePath": "staticwebassets\\studies\\images\\8684388\\I0000003.dcm"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\images\\8684388\\I0000003_map.png",
@@ -8739,10 +8719,6 @@
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\maps\\I0000003_map.png",
       "PackagePath": "staticwebassets\\studies\\maps\\I0000003_map.png"
-    },
-    {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\temp.png",
-      "PackagePath": "staticwebassets\\studies\\temp.png"
     },
     {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\studies\\temp.py",

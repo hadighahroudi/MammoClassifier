@@ -10,6 +10,7 @@ namespace MammoClassifier.Data.Context
         public DbSet<Study> Studies { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<ModelOutput> ModelOutputs { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

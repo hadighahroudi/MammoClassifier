@@ -1,0 +1,54 @@
+﻿@model MammoClassifier.Data.DTOs.LoginUserDTO;
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+<style>
+    .fixed-container {
+        background-image: linear-gradient(120deg, #36d1dc, #3989FD);
+        box-shadow: 10px 10px 5px darkcyan;
+        color: mintcream;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        font-size: 0.9rem;
+        width: 50vh;
+    }
+</style>
+
+<div class="fixed-container">
+
+    <h4>ورود کاربر</h4>
+
+    <hr />
+
+    <form asp-action="Login" asp-route-ReturnUrl="@ViewData["ReturnUrl"]">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <partial name="_CaptchaInput" />
+        <div class="form-group">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-2">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check mt-2">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>
+        <div class="form-group btn-group w-100 mt-2">
+            <input type="submit" value="ورود" class="btn btn-primary mb-0" />
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">بازگشت</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+    <partial name="_CaptchaScripts" />
+}

@@ -132,11 +132,12 @@ def get_laterality(img):
     else:
         return "L"
 
-def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, segmentor_model, device):
+def remove_pect_muscle(mlo_path, preprocess_transform, postprocess_transform, segmentor_model, device, clahe = False):
     # Remove pect muscle
     mlo_img, mlo_org_shape = process_dcm_image(mlo_path)
     mlo_img, mlo_bbox = crop_roi(mlo_img[:, :, np.newaxis], threshold=20)
-    # mlo_img = DWT2_CLAHE()(mlo_img)
+    if clahe:
+        mlo_img = DWT2_CLAHE()(mlo_img) # Only for INbreast
     mlo_img = cv2.resize(mlo_img, (512, 1024))
 
     # lat = get_laterality(mlo_img)
@@ -189,6 +190,44 @@ def prep_convnextv2_for_gradcam(classifier_model):
     def get_activations(self, x):
         return self.forward_features(x)
     
+    classifier_model.activations_hook = MethodType(activations_hook, classifier_model)
+    classifier_model.get_activations_gradient = MethodType(get_activations_gradient, classifier_model)
+    classifier_model.get_activations = MethodType(get_activations, classifier_model)
+    classifier_model.forward = MethodType(forward, classifier_model)
+
+    return classifier_model
+
+def prep_convnext_for_gradcam(classifier_model):
+    # Based on: https://github.com/pytorch/vision/blob/main/torchvision/models/convnext.py
+    
+    # def _forward_impl(self, x: Tensor) -> Tensor:
+    #     x = self.features(x)
+    #     x = self.avgpool(x)
+    #     x = self.classifier(x)
+    #     return x
+
+    # def forward(self, x: Tensor) -> Tensor:
+    #     return self._forward_impl(x)
+
+    # hook for the gradients of the activations
+    def activations_hook(self, grad):
+        self.gradients = grad
+
+    def forward(self, x):
+        x = self.features(x)
+        
+        # register the hook
+        h = x.register_hook(self.activations_hook)
+        
+        x = self.avgpool(x)
+        x = self.classifier(x)
+        return x
+
+    def get_activations_gradient(self):
+        return self.gradients
+
+    def get_activations(self, x):
+        return self.features(x)
 
     classifier_model.activations_hook = MethodType(activations_hook, classifier_model)
     classifier_model.get_activations_gradient = MethodType(get_activations_gradient, classifier_model)
@@ -197,11 +236,12 @@ def prep_convnextv2_for_gradcam(classifier_model):
 
     return classifier_model
 
-def predict(cc_path, mlo_roi, classifier_model, device, transform):
+def predict(cc_path, mlo_roi, classifier_model, device, transform, clahe = False):
     # Predict the probs
     cc_img, cc_org_shape = process_dcm_image(cc_path) 
     cc_img, cc_bbox = crop_roi(cc_img[:, :, np.newaxis], threshold=20)
-    # cc_img = DWT2_CLAHE()(cc_img)
+    if clahe:
+        cc_img = DWT2_CLAHE()(cc_img) # Only for INbreast
     cc_img = cv2.resize(cc_img, (512, 1024))
 
     # lat = get_laterality(cc_img)

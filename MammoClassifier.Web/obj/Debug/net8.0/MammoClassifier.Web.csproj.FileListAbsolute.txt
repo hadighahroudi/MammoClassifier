@@ -169,9 +169,5 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debu
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\scopedcss\Views\Shared\_MainLayout.cshtml.rz.scp.css
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\8684388\I0000000.dcm
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\8684388\I0000001.dcm
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\8684388\I0000002.dcm
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\8684388\I0000003.dcm
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\20588020_024ee3569b2605dc_MG_L_CC_ANON.dcm
-D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\wwwroot\studies\images\20588072_024ee3569b2605dc_MG_L_ML_ANON.dcm
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\GoogleReCaptcha.V3.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
