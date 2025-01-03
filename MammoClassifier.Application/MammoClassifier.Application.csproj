@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MammoClassifier.Data\MammoClassifier.Data.csproj" />
+  </ItemGroup>
+
 </Project>

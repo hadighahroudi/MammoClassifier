@@ -171,3 +171,5 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debu
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\obj\Debug\net8.0\scopedcss\Views\Shared\_MainLayout.cshtml.rz.scp.css
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\GoogleReCaptcha.V3.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\MammoClassifier.Application.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\MammoClassifier.Application.pdb

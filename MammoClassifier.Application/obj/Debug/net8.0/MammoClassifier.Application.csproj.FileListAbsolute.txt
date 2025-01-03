@@ -9,3 +9,8 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\refint\MammoClassifier.Application.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\MammoClassifier.Application.pdb
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\ref\MammoClassifier.Application.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\bin\Debug\net8.0\MammoClassifier.Data.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\bin\Debug\net8.0\MammoClassifier.Data.pdb
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\MammoClassifier.Application.csproj.AssemblyReference.cache
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\MammoClassifier.Application.sourcelink.json
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Application\obj\Debug\net8.0\MammoClassifier.Application.csproj.CopyComplete

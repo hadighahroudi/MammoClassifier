@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MammoClassifier.Application\MammoClassifier.Application.csproj" />
     <ProjectReference Include="..\MammoClassifier.Data\MammoClassifier.Data.csproj" />
   </ItemGroup>
 

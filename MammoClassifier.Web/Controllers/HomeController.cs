@@ -7,16 +7,20 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using GoogleReCaptcha.V3.Interface;
+using MammoClassifier.Application.Services.Interfaces;
 
 namespace MammoClassifier.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly MammoClassifierDbContext _context;
+    private readonly IUserService _userService;
+    private readonly ICaptchaValidator _captchaValidator;
 
-    public HomeController(MammoClassifierDbContext context)
+    public HomeController(IUserService userService, ICaptchaValidator captchaValidator)
     {
-        _context = context;
+        _userService = userService;
+        _captchaValidator = captchaValidator;
     }
 
     public IActionResult Index()
@@ -37,46 +41,65 @@ public class HomeController : Controller
     {
         ViewData["ReturnUrl"] = returnUrl; //In case any condition leads to return View
 
-        if (ModelState.IsValid)
+        if (!await _captchaValidator.IsCaptchaPassedAsync(dto.Captcha))
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == dto.Username);
-            if (user == null || user.Password != dto.Password) // Hash the password
+            ModelState.AddModelError(key: "Username", errorMessage: "عدم تایید اعتبارسنجی reCAPTCHA.");
+        }
+        else if (ModelState.IsValid)
+        {
+            var res = await _userService.AuthenticateUser(dto);
+            switch (res)
             {
-                ModelState.AddModelError(key: "Username", errorMessage: "نام کاربری یا کلمه عبور اشتباه است.");
-                return View(dto);
+                case LoginUserResult.NotFound:
+                    ModelState.AddModelError(key: "Username", errorMessage: "نام کاربری یا کلمه عبور اشتباه است.");
+                    break;
+
+                case LoginUserResult.NotActivated:
+                    ModelState.AddModelError(key: "Username", errorMessage: "حساب کاربری شما فعال نشده است.");
+                    break;
+
+                case LoginUserResult.Error:
+                    ModelState.AddModelError(key: "Username", errorMessage: "خطا در ورود.");
+                    break;
+
+                case LoginUserResult.Success:
+                    var user = await _userService.GetUserByUsername(dto.Username);
+
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                        new Claim(ClaimTypes.Name, user.Username)
+                    };
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(identity);
+                    var properties = new AuthenticationProperties()
+                    {
+                        IsPersistent = dto.RememberMe
+                    };
+
+                    await HttpContext.SignInAsync(principal, properties);
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return Redirect("/");
+                    }
             }
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
-            };
-
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
-            var properties = new AuthenticationProperties()
-            {
-                IsPersistent = dto.RememberMe
-            };
-
-            await HttpContext.SignInAsync(principal, properties);
-
-            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl)) { 
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return Redirect("/");
-            }
-
         }
 
         return View(dto);
     }
 
-    public IActionResult Privacy()
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
     {
-        return View();
+        await HttpContext.SignOutAsync();
+
+        return Redirect("/");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
