@@ -28,7 +28,10 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="">خوش آمدید، @User.Identity.Name</a>
+                                <span class="nav-link">خوش آمدید، @User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Signup">ثبت نام کاربر جدید</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-action="Logout">خروج</a>

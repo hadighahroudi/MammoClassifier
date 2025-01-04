@@ -167,6 +167,14 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
         margin-bottom: 0.5rem !important;
     }
 
+.ai-label {
+    background-color: #FFF157;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px 5px 0px 0px;
+    color: black;
+}
+
 .study-list button {
     background-color: transparent;
     border: none;
@@ -253,11 +261,11 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
 
 .image-viewer {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 20px;
-    flex-wrap: wrap; /* Allows images to wrap if the viewer area is narrow */
-    gap: 10px;
+    padding: 10px;
+    /*flex-wrap: wrap;*/ /* Allows images to wrap if the viewer area is narrow */
     height: 100%;
 }
 
@@ -271,6 +279,7 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
     overflow: hidden;
     position: relative;
     height: 100%;
+    margin: auto;
 }
 
     .image-container div {
@@ -280,6 +289,26 @@ div.dt-container .dt-paging .dt-paging-button.current { /*Selector of the curren
         top: 0;
         height: 100%;
     }
+
+.study-change-btn {
+    display: flex;
+    background-color: #1e2a38;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    height: 25%;
+    margin: auto;
+}
+
+    .study-change-btn:hover {
+        background-color: #7160e8;
+        color: white;
+    }
+
+    .study-change-btn i{
+        margin: auto;
+    }
+
 
 /*#mapImage1, #mapImage2, #mapImage1 > canvas, #mapImage2 > canvas {
     background-color: rgba(255, 255, 255, 0) !important;

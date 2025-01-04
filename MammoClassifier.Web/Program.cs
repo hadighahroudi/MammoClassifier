@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
-
+builder.Services.AddScoped<IPasswordHelper, PasswordHelper>();
 
 builder.Services.AddDbContext<MammoClassifierDbContext>(options =>
 {

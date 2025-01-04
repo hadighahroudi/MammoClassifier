@@ -123,6 +123,9 @@ namespace MammoClassifier.Data.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
+                    b.Property<string>("BIRADS")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 

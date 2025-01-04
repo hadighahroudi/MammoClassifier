@@ -7,6 +7,7 @@
         public int? Age { get; set; }
         public string? PatientID { get; set; }
         public string? StudyUID { get; set; }
+        public string? BIRADS {  get; set; }
         public ICollection<Image> Images { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace MammoClassifier.Data.Entities
         public string Password { get; set; }
 
         [Display(Name = "مسدود")]
-        public bool IsBlocked { get; set; }
+        public bool IsBlocked { get; set; } = false;
     }
 }

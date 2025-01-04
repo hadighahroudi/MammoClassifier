@@ -28,6 +28,42 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet("signup")]
+    public IActionResult Signup()
+    {
+        return View();
+    }
+
+    [HttpPost("signup"), ValidateAntiForgeryToken]
+    public async Task<IActionResult> Signup(RegisterUserDTO dto)
+    {
+        if (!await _captchaValidator.IsCaptchaPassedAsync(dto.Captcha))
+        {
+            ModelState.AddModelError(key: "Username", errorMessage: "عدم تایید اعتبارسنجی reCAPTCHA.");
+        }
+        else if (ModelState.IsValid)
+        {
+            var res = await _userService.RegisterUser(dto);
+
+            switch(res)
+            {
+                case RegisterUserResult.Success:
+                    return RedirectToAction("Login");
+
+                case RegisterUserResult.UsernameExists:
+                    ModelState.AddModelError(key: "Username", errorMessage: "اکانتی با این نام کاربری وجود دارد.");
+                    break;
+
+                case RegisterUserResult.Error:
+                    ModelState.AddModelError(key: "Username", errorMessage: "خطا در ثبت نام.");
+                    break;
+
+            }
+        }
+
+        return View(dto);
+    }
+
     [HttpGet("login")]
     public IActionResult Login(string returnUrl = null)
     {

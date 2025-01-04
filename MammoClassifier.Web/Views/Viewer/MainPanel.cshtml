@@ -18,12 +18,11 @@
     </div> *@
     @if (Model.Images.ElementAt(0).ClassProbs.Any())
     {
-
         <div class="d-flex flex-column model-result">
-            <h5 class="m-auto">AI assistant</h5>
+            <h5 class="m-auto ai-label">AI assistant</h5>
             <hr class="m-0" />
             <h6>Final prediction:</h6>
-            <p>Label : @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label</p>
+            <p>Label: @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label</p>
             <p>Probability: @Math.Round((Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Probability * 100), 2)%</p>
             <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).BIRADS</p>
             @* <hr class="m-0" />
@@ -63,9 +62,16 @@
         </div>
         </div> *@
         </div>
+
+        <div class="d-flex flex-column model-result">
+            <form>
+                <label class="mb-1">Final BI-RADS score:</label>
+                <input type="hidden" asp-for="Id" id="study_id" />
+                <input asp-for="BIRADS" class="w-100" id="birads_input"/>
+            </form>
+        </div>
     }
 </div>
-
 
 <!-- Main Viewer -->
 <div class="viewer">
@@ -106,6 +112,7 @@
         </div>
     </div>
     <div class="image-viewer">
+        <a asp-action="MainPanel" asp-route-id="@ViewData["PrevStudyId"]" class="study-change-btn"><i class="bi bi-caret-left" ></i></a>
         <div class="image-container">
             <!-- <img id="dicomImage1" src="vindr_cc.png" alt="DICOM Image" /> -->
             <div id="dicomImage1" class="image-panel"></div>
@@ -116,6 +123,7 @@
             <div id="dicomImage2" class="image-panel"></div>
             <div id="mapImage2" class="image-panel"></div>
         </div>
+        <a asp-action="MainPanel" asp-route-id="@ViewData["NextStudyId"]" class="study-change-btn"><i class="bi bi-caret-right"></i></a>
     </div>
 </div>
 
@@ -139,6 +147,24 @@
             // }).fail(function (result) {
             //     alert("Request to ML engine FAILED. code:" + result.status + " error:" + result.responseText);
             // });
+
+            $('#birads_input').on('input', function () {
+                const score = $(this).val();
+                const studyId = $('#study_id').val();
+
+                $.ajax({
+                    url: '/savebirads',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ StudyId: studyId, Score: score }),
+                    success: function (response) {
+                        console.log('Value saved:', response);
+                    },
+                    error: function (err) {
+                        console.error('Error:', err);
+                    }
+                });
+            })
         });
     </script>
 }

@@ -31,12 +31,6 @@ body {
     background: linear-gradient(135deg, white 0%, #2575fc 100%);
 }
 
-main {
-}
-
-footer {
-}
-
 .image-card {
     width: 35rem;
     border-width: 0;
@@ -54,4 +48,15 @@ footer {
 .focus-none:focus {
     outline: none;
     box-shadow: none;
+}
+
+.form-container {
+    background-image: linear-gradient(120deg, #36d1dc, #3989FD);
+    box-shadow: 10px 10px 5px darkcyan;
+    color: mintcream;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 0.9rem;
+    width: 50vh;
 }
