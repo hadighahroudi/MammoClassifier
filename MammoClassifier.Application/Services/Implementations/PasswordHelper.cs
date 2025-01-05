@@ -1,22 +1,39 @@
 ﻿using MammoClassifier.Application.Services.Interfaces;
+using MammoClassifier.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
 using System.Text;
 
 namespace MammoClassifier.Application.Services.Implementations
 {
     public class PasswordHelper : IPasswordHelper
     {
-        public string EncodePasswordMD5(string password)
+        public string EncodePassword(string password)
         {
-            Byte[] originalBytes;
-            Byte[] encodedBytes;
-            MD5 md5;
-            //Instantiate MD5CryptoServiceProvider, get bytes for original password and compute hash (encoded password)   
-            md5 = new MD5CryptoServiceProvider();
-            originalBytes = ASCIIEncoding.Default.GetBytes(password);
-            encodedBytes = md5.ComputeHash(originalBytes);
-            //Convert encoded bytes back to a 'readable' string   
-            return BitConverter.ToString(encodedBytes);
+            return new PasswordHasher<object?>().HashPassword(null, password);
+
+        }
+
+        public bool ComparePasswordWithHash(string savedHash, string password)
+        {
+            var passwordVerificationResult = new PasswordHasher<object?>().VerifyHashedPassword(null, savedHash, password);
+            switch (passwordVerificationResult)
+            {
+                case PasswordVerificationResult.Failed:
+                    return false;
+
+                case PasswordVerificationResult.Success:
+                    return true;
+
+                case PasswordVerificationResult.SuccessRehashNeeded:
+                    Console.WriteLine("Password ok but should be rehashed and updated.");
+                    return true;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
         }
     }
 }

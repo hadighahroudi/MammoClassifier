@@ -22,9 +22,9 @@ namespace MammoClassifier.Application.Services.Implementations
             try
             {
                 var user = await GetUserByUsername(dto.Username);
-                if (user == null || 
-                    user.IsDeleted || 
-                    user.Password != _passwordHelper.EncodePasswordMD5(dto.Password)) return LoginUserResult.NotFound;
+                if (user == null ||
+                    user.IsDeleted ||
+                    !_passwordHelper.ComparePasswordWithHash(user.Password, dto.Password)) return LoginUserResult.NotFound;
                 else if (user.IsBlocked) return LoginUserResult.NotActivated;
                 return LoginUserResult.Success;
             }
@@ -43,7 +43,7 @@ namespace MammoClassifier.Application.Services.Implementations
                     var user = new User()
                     { 
                         Username = dto.Username,
-                        Password = _passwordHelper.EncodePasswordMD5(dto.Password),
+                        Password = _passwordHelper.EncodePassword(dto.Password),
                         CreateDate = DateTime.Now,
                         LastUpdateDate = DateTime.Now
                     };

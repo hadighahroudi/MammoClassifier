@@ -173,3 +173,6 @@ D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debu
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\MammoClassifier.Application.dll
 D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\MammoClassifier.Application.pdb
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Study\Proposal\Breast cancer(v2)\MammoClassifier\MammoClassifier.Web\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
