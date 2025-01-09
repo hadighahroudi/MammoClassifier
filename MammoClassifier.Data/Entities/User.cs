@@ -16,6 +16,8 @@ namespace MammoClassifier.Data.Entities
         [MinLength(8, ErrorMessage = "{0} نمی تواند کمتر از {1} کاراکتر باشد")]
         public string Password { get; set; }
 
+        public string Role {  get; set; }
+
         [Display(Name = "مسدود")]
         public bool IsBlocked { get; set; } = false;
     }

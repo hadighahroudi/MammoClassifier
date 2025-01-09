@@ -45,7 +45,8 @@ namespace MammoClassifier.Application.Services.Implementations
                         Username = dto.Username,
                         Password = _passwordHelper.EncodePassword(dto.Password),
                         CreateDate = DateTime.Now,
-                        LastUpdateDate = DateTime.Now
+                        LastUpdateDate = DateTime.Now,
+                        Role = "DefaultUser"
                     };
 
                     await _context.Users.AddAsync(user);
