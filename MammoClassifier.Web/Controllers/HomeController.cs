@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using GoogleReCaptcha.V3.Interface;
 using MammoClassifier.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MammoClassifier.Web.Controllers;
 
@@ -28,7 +29,7 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpGet("signup")]
+    [HttpGet("signup"), Authorize]
     public IActionResult Signup()
     {
         return View();

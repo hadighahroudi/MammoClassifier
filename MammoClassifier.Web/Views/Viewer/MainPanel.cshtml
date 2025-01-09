@@ -7,8 +7,8 @@
 
 <!-- Sidebar -->
 <div class="viewer-sidebar">
-    <div class="d-flex justify-content-center">
-        <h2 class="viewer-title">سامانه هوشنمد بینا</h2>
+    <div class="d-flex" style="height: 65px">
+        <h2 class="viewer-title m-auto">سامانه هوشنمد بینا</h2>
     </div>
 
     @*     <div class="studies-cat">
@@ -21,10 +21,10 @@
         <div class="d-flex flex-column model-result">
             <h5 class="m-auto ai-label">AI assistant</h5>
             <hr class="m-0" />
-            <h6>Final prediction:</h6>
+            @*<h6>Final prediction:</h6>*@
             <p>Label: @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label</p>
             <p>Probability: @Math.Round((Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Probability * 100), 2)%</p>
-            <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).BIRADS</p>
+            @* <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).BIRADS</p> *@
             @* <hr class="m-0" />
         <h6>Probability of other categories:</h6>
         <p>BI-RADS4: 78%</p>
@@ -62,15 +62,20 @@
         </div>
         </div> *@
         </div>
-
-        <div class="d-flex flex-column model-result">
-            <form>
-                <label class="mb-1">Final BI-RADS score:</label>
-                <input type="hidden" asp-for="Id" id="study_id" />
-                <input asp-for="BIRADS" class="w-100" id="birads_input"/>
-            </form>
-        </div>
     }
+
+    <div class="d-flex flex-column model-result">
+        <h5 class="m-auto">Patient's info</h5>
+        <hr class="m-0" />
+        <p>Name: @Model.FirstName @Model.LastName</p>
+        <p>Age: @Model.Age</p>
+        <p>Patient Id: @Model.PatientID</p>
+        <form>
+            <label class="mb-1">Final BI-RADS score:</label>
+            <input type="hidden" asp-for="Id" id="study_id" />
+            <input asp-for="BIRADS" class="w-100" id="birads_input" />
+        </form>
+    </div>
 </div>
 
 <!-- Main Viewer -->
@@ -112,7 +117,7 @@
         </div>
     </div>
     <div class="image-viewer">
-        <a asp-action="MainPanel" asp-route-id="@ViewData["PrevStudyId"]" class="study-change-btn"><i class="bi bi-caret-left" ></i></a>
+        <a asp-action="MainPanel" asp-route-id="@ViewData["PrevStudyId"]" class="study-change-btn"><i class="bi bi-caret-left"></i></a>
         <div class="image-container">
             <!-- <img id="dicomImage1" src="vindr_cc.png" alt="DICOM Image" /> -->
             <div id="dicomImage1" class="image-panel"></div>
@@ -167,4 +172,14 @@
             })
         });
     </script>
+
+    @*Turn off the heatmap for non-malignant cases*@
+    @if (Model.Images.ElementAt(0).ClassProbs.Any() && Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label == "Non-Malignant")
+    {
+        <script>
+            $("#heatmap_checkbox").prop('checked', false);
+            $("#mapImage1").css("opacity", 0); // I'll lose the mouse events if hide the element
+            $("#mapImage2").css("opacity", 0);
+        </script>
+    }
 }

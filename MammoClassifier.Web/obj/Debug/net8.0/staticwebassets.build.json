@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7OWtZ479yJHy8/EN7VJZNcGKV9WH+RMZQEHTYe0737o=",
+  "Hash": "H4Oh9uz9nzTXxs2y+ellclleCCJ4oIbSzpOcvpA96VQ=",
   "Source": "MammoClassifier.Web",
   "BasePath": "_content/MammoClassifier.Web",
   "Mode": "Default",
@@ -452,25 +452,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\load_viewer.js"
-    },
-    {
-      "Identity": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\site.js",
-      "SourceId": "MammoClassifier.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\",
-      "BasePath": "_content/MammoClassifier.Web",
-      "RelativePath": "js/site.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
       "Identity": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\zoom_in_out_mouse_events.js",

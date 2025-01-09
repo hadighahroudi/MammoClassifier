@@ -89,10 +89,6 @@
       "PackagePath": "staticwebassets\\js\\load_viewer.js"
     },
     {
-      "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
-    },
-    {
       "Id": "D:\\Study\\Proposal\\Breast cancer(v2)\\MammoClassifier\\MammoClassifier.Web\\wwwroot\\js\\zoom_in_out_mouse_events.js",
       "PackagePath": "staticwebassets\\js\\zoom_in_out_mouse_events.js"
     },
