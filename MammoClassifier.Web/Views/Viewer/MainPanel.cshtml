@@ -10,57 +10,14 @@
     <div class="d-flex" style="height: 65px">
         <h2 class="viewer-title m-auto">سامانه هوشنمد بینا</h2>
     </div>
-
-    @*     <div class="studies-cat">
-    <button class="tab active">Primary</button>
-    <button class="tab">Recent</button>
-    <button class="tab">All</button>
-    </div> *@
+ 
     @if (Model.Images.ElementAt(0).ClassProbs.Any())
     {
         <div class="d-flex flex-column model-result">
             <h5 class="m-auto ai-label">AI assistant</h5>
             <hr class="m-0" />
-            @*<h6>Final prediction:</h6>*@
             <p>Label: @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label</p>
             <p>Probability: @Math.Round((Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Probability * 100), 2)%</p>
-            @* <p>Category: BI-RADS @Model.Images.ElementAt(0).ClassProbs.ElementAt(0).BIRADS</p> *@
-            @* <hr class="m-0" />
-        <h6>Probability of other categories:</h6>
-        <p>BI-RADS4: 78%</p>
-        <p>BI-RADS3: 37%</p>
-        <p>BI-RADS2: 9%</p>
-        <p>BI-RADS5: 38%</p> *@
-            @* <div class="study-type">MG</div>
-        <div class="study-thumbnails">
-        <!-- Thumbnail example -->
-        <div class="thumbnail">
-        <img src="@Model.Images.Single(x => x.Projection == "CC").ThumbnailPath" alt="DICOM Thumbnail" />
-        <p>S: 1003</p>
-        </div>
-        <div class="thumbnail">
-        <img src="@Model.Images.Single(x => x.Projection == "MLO").ThumbnailPath" alt="DICOM Thumbnail" />
-        <p>S: 1004</p>
-        </div>
-        </div>
-
-        <hr />
-
-        <div>
-        <div class="study-date">09-Jan-2023</div>
-        <div class="study-type">MG</div>
-        <div class="study-thumbnails">
-        <!-- Thumbnail example -->
-        <div class="thumbnail">
-        <img src="thumbnails/cc_thumbnail.png" alt="DICOM Thumbnail" />
-        <p>S: 1003</p>
-        </div>
-        <div class="thumbnail">
-        <img src="thumbnails/mlo_thumbnail.png" alt="DICOM Thumbnail" />
-        <p>S: 1004</p>
-        </div>
-        </div>
-        </div> *@
         </div>
     }
 
@@ -85,7 +42,7 @@
             <label class="d-flex align-items-center gap-1">
                 Adjust window
                 <label class="switch">
-                    <input type="checkbox" id="mouse_checkbox">
+                    <input type="checkbox" id="mouse_checkbox" checked>
                     <span class="slider round"></span>
                 </label>
                 Move the image
@@ -143,15 +100,6 @@
             loadAndEnableElements('@Model.Images.Single(x => x.Projection == "CC").DICOMPath', '@Model.Images.Single(x => x.Projection == "MLO").DICOMPath',
                 '@Model.Images.Single(x => x.Projection == "CC").MapPath', '@Model.Images.Single(x => x.Projection == "MLO").MapPath')
 
-            // $.ajax("http://127.0.0.1:8000/calculate", {
-            //     data: JSON.stringify({ "number": 10 }),
-            //     contentType: 'application/json',
-            //     type: 'POST'
-            // }).done(function (result) {
-            //     console.log(result);
-            // }).fail(function (result) {
-            //     alert("Request to ML engine FAILED. code:" + result.status + " error:" + result.responseText);
-            // });
 
             $('#birads_input').on('input', function () {
                 const score = $(this).val();
@@ -172,8 +120,16 @@
             })
         });
     </script>
-
-    @*Turn off the heatmap for non-malignant cases*@
+        
+    @*Turn off the heatmap for non-malignant cases or those without heatmap*@
+    @if (Model.Images.ElementAt(0).MapPath.Contains("dummy"))
+    {
+        <script>
+            $("#heatmap_checkbox").prop('checked', false);
+            $("#mapImage1").css("opacity", 0); // I'll lose the mouse events if hide the element
+            $("#mapImage2").css("opacity", 0);
+        </script>
+    } 
     @if (Model.Images.ElementAt(0).ClassProbs.Any() && Model.Images.ElementAt(0).ClassProbs.ElementAt(0).Label == "Non-Malignant")
     {
         <script>

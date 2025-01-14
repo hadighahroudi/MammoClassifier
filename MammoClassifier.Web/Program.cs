@@ -44,7 +44,7 @@ app.UseStaticFiles(new StaticFileOptions
         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
     ContentTypeProvider = new FileExtensionContentTypeProvider
     {
-        Mappings = { [".dcm"] = "application/dicom" } // Custom MIME type
+        Mappings = { [".dcm"] = "application/dicom", [".dicom"] = "application/dicom" } // Custom MIME type
     }
 });
 

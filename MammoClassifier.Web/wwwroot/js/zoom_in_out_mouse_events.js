@@ -40,9 +40,20 @@ function set_mouse_events(element, overlay) {
             }
             else {
                 let viewport = cornerstone.getViewport(element);
-                viewport.voi.windowWidth += deltaX / viewport.scale;
-                viewport.voi.windowCenter += deltaY / viewport.scale;
+                viewport.voi.windowWidth += (deltaX / viewport.scale);
+                viewport.voi.windowCenter += (deltaY / viewport.scale);
                 cornerstone.setViewport(element, viewport);
+
+                //console.log(viewport.voi.windowWidth);
+                //let canvas = element.firstElementChild;
+                //applyWindowing(canvas, viewport.voi.windowWidth, viewport.voi.windowCenter); // Adjust window width and center
+
+                //contrast += (deltaX * 0.01);
+                //const canvas = element.firstElementChild;
+                //const ctx = canvas.getContext('2d');
+                //let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                //imageData = contrastImage(imageData, contrast);
+                //ctx.putImageData(imageData, 0, 0);
             }
         }
 

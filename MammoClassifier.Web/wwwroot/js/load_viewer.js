@@ -158,8 +158,14 @@ tabs.forEach((tab) => {
     });
 });
 
+// Set the initial task of mouse left click movement based on the mouse_checkbox state.
+if ($("#mouse_checkbox").is(":checked")) {
+    var mouse_move_image = true;
+}
+else {
+    var mouse_move_image = false;
+}
 
-var mouse_move_image = false;
 $("#mouse_checkbox").on("change", function () {
     if (this.checked) {
         mouse_move_image = true;
